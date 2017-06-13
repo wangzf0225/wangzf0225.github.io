@@ -2,7 +2,7 @@
 layout: post
 title:  "HTTPOXY漏洞分析及Fastcgi与phpfpm之间的关系"
 date: 2016-07-21 17:46:26 +0800
-categories: 原创
+categories: original
 ---
 落笔前两三天红帽官网报出一个http协议实现的漏洞，影响到绝大部分主流的cgi模式的http server端程序。简单的说，在http header中设置一个"proxy: 1.2.3.4"这样的请求头，就可以控制cgi模式下的环境变量HTTP_PROXY。
 

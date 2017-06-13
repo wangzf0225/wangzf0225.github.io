@@ -2,7 +2,7 @@
 layout: post
 title:  "账号安全的异常检测"
 date: 2016-04-14 16:06:26 +0800
-categories: 原创
+categories: original
 ---
 
 ## 摘要
