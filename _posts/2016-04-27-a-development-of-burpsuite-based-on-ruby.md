@@ -253,3 +253,27 @@ java_import 'burp.IBurpExtender'
 java_import 'burp.IMessageEditorTab'
 java_import 'burp.IMessageEditorTabFactory'
 {% endhighlight %}
+
+在registerExtenderCallbacks方法的定义中将这个插件注册成为一个MessageEditorTabFactory，即添加一行：callbacks.registerMessageEditorTabFactory(self)。然后定义createNewInstance方法，根据开发文档的定义，这个方法需要返回一个实例化后的IMessageEditorTab对象。于是我们在这里初始化了一个叫MakeTabs的类，后面我们只需要按照接口规范重新定义这个类即可。
+
+{% highlight ruby %}
+class BurpExtender
+  include IBurpExtender, IMessageEditorTab, IMessageEditorTabFactory
+
+  def   registerExtenderCallbacks(callbacks)
+
+    @callbacks = callbacks
+
+    callbacks.setExtensionName("MessageEditorTab")
+
+    @stdout = java.io.PrintWriter.new(callbacks.getStdout(), true)
+
+    callbacks.registerHttpListener(self)
+    callbacks.registerMessageEditorTabFactory(self)
+  end
+
+  def createNewInstance(controller, editable)
+    MakeTabs.new(@callbacks, editable)
+  end
+end
+{% endhighlight %}
