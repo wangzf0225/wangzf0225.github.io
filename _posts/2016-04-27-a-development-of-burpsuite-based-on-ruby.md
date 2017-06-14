@@ -132,6 +132,7 @@ JRUBY_HOME=/Users/myname/.rvm/rubies/jruby-1.7.19 java -XX:MaxPermSize=1G -Xmx1g
 打开Burp，在Extender-->Options选项卡最下方的Ruby Environment部门导入你的Jruby.jar文件，没如果没有报错，则说说明加载成功。
 
 ![a_development_of_burpsuite_based_on_ruby_01.jpg](/assset/img/cc710e80636d254de260ea125125547e187e2d8e.jpg)
+![cc710e80636d254de260ea125125547e187e2d8e.jpg](/assset/img/cc710e80636d254de260ea125125547e187e2d8e.jpg)
 
 ## 2.4 测试
 
