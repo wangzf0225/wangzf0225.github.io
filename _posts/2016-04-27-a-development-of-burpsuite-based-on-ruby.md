@@ -178,7 +178,7 @@ end
 
 官方的接口文档对registerExtenderCallbacks方法做了这样的说明：
 
-> “This method is invoked when the extension is loaded. It registers an instance of the IBurpExtenderCallbacks interface, providing methods that may be invoked by the extension to perform various actions.”
+“This method is invoked when the extension is loaded. It registers an instance of the IBurpExtenderCallbacks interface, providing methods that may be invoked by the extension to perform various actions.”
 
 这个方法以“注册”的方式定义了扩展插件中可用的实例（类型）。每一个Burp插件都必然包含上面这几行代码，少了一行都不行。
 
@@ -239,8 +239,5 @@ end
 curl -x 127.0.0.1:8009 http://www.xxx.com -I
 ```
 
-效果如图所示：
-
-![a_development_of_burpsuite_based_on_ruby_06.jpg](/assets/img/8fa73de088b587bc2d95184f678746465101add9.jpg)
 
 
