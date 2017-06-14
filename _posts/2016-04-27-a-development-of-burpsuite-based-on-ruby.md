@@ -131,8 +131,8 @@ JRUBY_HOME=/Users/myname/.rvm/rubies/jruby-1.7.19 java -XX:MaxPermSize=1G -Xmx1g
 
 打开Burp，在Extender-->Options选项卡最下方的Ruby Environment部门导入你的Jruby.jar文件，没如果没有报错，则说说明加载成功。
 
-![a_development_of_burpsuite_based_on_ruby_01.jpg](/assset/img/cc710e80636d254de260ea125125547e187e2d8e.jpg)
-![cc710e80636d254de260ea125125547e187e2d8e.jpg](/assset/img/cc710e80636d254de260ea125125547e187e2d8e.jpg)
+![a_development_of_burpsuite_based_on_ruby_01.jpg](/assets/img/cc710e80636d254de260ea125125547e187e2d8e.jpg)
+![cc710e80636d254de260ea125125547e187e2d8e.jpg](/assets/img/cc710e80636d254de260ea125125547e187e2d8e.jpg)
 
 ## 2.4 测试
 
@@ -142,18 +142,17 @@ Burpsuite官方网站提供了一个测试文件（点这里下载）
 
 点击Extentders标签下的Extention选项卡，在上半部分左侧点击“Add"
 
-![a_development_of_burpsuite_based_on_ruby_02.jpg]/assset/img/50552fa0ef57d339278794ba6ac3d267b4d13953.jpg
+![a_development_of_burpsuite_based_on_ruby_02.jpg](/assets/img/50552fa0ef57d339278794ba6ac3d267b4d13953.jpg)
 
 在Extention type处选择ruby类型，点击Select file选择解压出来的helloworld.rb文件。
 
-![a_development_of_burpsuite_based_on_ruby_03.jpg]/assset/img/825c2c9cc62e5039a2bd5e685e5012df156767a7.jpg
+![a_development_of_burpsuite_based_on_ruby_03.jpg](/assets/img/825c2c9cc62e5039a2bd5e685e5012df156767a7.jpg)
 
 
-![a_development_of_burpsuite_based_on_ruby_04.jpg]/assset/img/b7bc3f205bf2f95f329957df14306d974409c5b0.jpg
+![a_development_of_burpsuite_based_on_ruby_04.jpg](/assets/img/b7bc3f205bf2f95f329957df14306d974409c5b0.jpg)
 
 回到主页面点击Next，就会在弹出的控制台窗口中显示Hello World字符，此时全部的准备工作都已完成。
 
-![a_development_of_burpsuite_based_on_ruby.jpg]/assset/img/.jpg
 
 # 0x02 第一个Ruby扩展插件
 
@@ -238,7 +237,7 @@ curl -x 127.0.0.1:8009 http://www.xxx.com -I
 
 效果如图所示：
 
-![a_development_of_burpsuite_based_on_ruby_05.jpg]/assset/img/8fa73de088b587bc2d95184f678746465101add9.jpg
+![a_development_of_burpsuite_based_on_ruby_05.jpg](assets/img/8fa73de088b587bc2d95184f678746465101add9.jpg)
 
 # 0x03 创建一个HttpMessageEditorTab实例
 
@@ -382,9 +381,9 @@ end
 {% end hightlight%}
 
 将上述代码保存至一个ruby文件中并在BurpExtender选项卡中载入，就可以看到如下效果：
-![a_development_of_burpsuite_based_on_ruby_06.jpg]/assset/img/1cbde3d4f4a0bd4cbac620433799bd0d968d1435.jpg
+![a_development_of_burpsuite_based_on_ruby_06.jpg](/assets/img/1cbde3d4f4a0bd4cbac620433799bd0d968d1435.jpg)
 
-![a_development_of_burpsuite_based_on_ruby_07.jpg]/assset/img/5a6761c0d4f74fca15bca71f897b1614f854e7cb.jpg
+![a_development_of_burpsuite_based_on_ruby_07.jpg](/assets/img/5a6761c0d4f74fca15bca71f897b1614f854e7cb.jpg)
 
 # 0x04 总结
 
