@@ -246,3 +246,10 @@ curl -x 127.0.0.1:8009 http://www.xxx.com -I
 
 如前所述，我们构建新的Tab需要引入burp.IMessageEditorTab和burp.IMessageEditorTabFactory这两个java类，所以首先在代码的开始部分使用java_import引入这两个类。
 
+{% highlight ruby %}
+require 'java'
+
+java_import 'burp.IBurpExtender'
+java_import 'burp.IMessageEditorTab'
+java_import 'burp.IMessageEditorTabFactory'
+{% end hightlight %}
