@@ -154,3 +154,22 @@ Burpsuite官方网站提供了一个测试文件（[点这里下载](https://por
 
 ![a_development_of_burpsuite_based_on_ruby_05.jpg](/assets/img/46b4e1572b38eea59a9c13e0ac4eb5a640522c9c.jpg)
 
+# 0x02 第一个Ruby扩展插件
+
+在开发个人的第一个插件之前，如果有时间，看一下Burpsuite官方提供的开发者文档可以帮助开发者对接口系列的设计有更全面的认识。地址在：https://portswigger.net/burp/extender/api/index.html。@Her0in在这篇文章中http://drops.wooyun.org/tools/14040对一些主要的接口做了介绍，大家可以参考。有了上面这些准备，就可以真正开始着手开发你的Burp插件了。
+
+Burp的插件开发是有固定的模式的，为了说明这个模式，请看下面几行代码。
+
+{% highlight ruby %}
+require 'java'
+java_import 'burp.IBurpExtender'
+
+class BurpExtender
+  include IBurpExtender
+
+  def registerExtenderCallbacks(callbacks)
+    callbacks.setExtensionName("Your Extender Name")
+  end
+end
+{% endhighlight %}
+
