@@ -298,3 +298,88 @@ isModifed返回一个布尔值，它的作用是判断当前的文本内容是�
 getSelectedData返回byte类型，它通过@txt_input.getSelectedText()获得。
 
 完整的代码：
+
+{% highlight ruby %}
+require 'java'
+require 'json'
+
+java_import 'burp.IBurpExtender'
+java_import 'burp.IMessageEditorTab'
+java_import 'burp.IMessageEditorTabFactory'
+
+class BurpExtender
+  include IBurpExtender, IMessageEditorTabFactory
+
+  def   registerExtenderCallbacks(callbacks)
+
+    @callbacks = callbacks
+
+    callbacks.setExtensionName("JsonFormater")
+
+    @stdout = java.io.PrintWriter.new(callbacks.getStdout(), true)
+
+
+    callbacks.registerMessageEditorTabFactory(self)
+  end
+
+  def createNewInstance(controller, editable)
+    MakeTabs.new(@callbacks, editable)
+  end
+end
+
+class MakeTabs
+  include IMessageEditorTab
+
+  def initialize(callbacks, editable)
+    @stderr = callbacks.get_stderr()
+    @helper = callbacks.get_helpers()
+    @txt_input = callbacks.create_text_editor()
+    @editable = editable
+    @stdout = java.io.PrintWriter.new(callbacks.getStdout(), true)
+    @callbacks = callbacks
+  end
+
+  def getTabCaption
+    "MyTab"
+  end
+
+  def getUiComponent
+    @txt_input.get_component()
+
+  end
+
+  def isEnabled(content, isRequest)
+    not isRequest
+  end
+
+  def setMessage(content, isRequest)
+    unless isRequest
+      @txt_input.text = "HTTP Reponse is nil or empty.".to_java_bytes  if content.nil? or content.empty?
+      lines= content.to_s.split("\n")
+      body = ""
+      lines.each_with_index{|each,index|  body = each if each.chomp =~ /^\{.*\}$/  }
+      if body.size > 0
+        body   = body.chomp
+        begin
+          hash = JSON.parse body
+          body = JSON.pretty_generate hash
+        rescue
+          @stderr.write(" error: #{$!} at#{$@}\n".to_java_bytes)
+        end
+        @txt_input.text = body.to_java_bytes
+      end
+    end
+    true
+  end
+
+  def getMessage
+    return @txt_input.getText
+  end
+
+  def isModifed
+    return @txt_input.text_modified?
+  end
+
+end
+
+{% endhighlight %}
