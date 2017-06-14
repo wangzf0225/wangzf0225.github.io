@@ -204,13 +204,29 @@ void processHttpMessage(int toolFlag, boolean messageIsRequest, IHttpRequestResp
 {% highlight ruby %}
 require 'java'
 java_import 'burp.IBurpExtender'
+java_import 'burp.IHttpListener'
+
 
 class BurpExtender
-  include IBurpExtender
+
+  include IBurpExtender,IHttpListener
 
   def registerExtenderCallbacks(callbacks)
+    @callbacks = callbacks
+    @stdout    = java.io.PrintWriter.new(callbacks.getStdout(), true)
+
     callbacks.setExtensionName("Your Extender Name")
+    callbacks.registerHttpListener(self)
+
   end
+
+  def processHttpMessage(toolFlag, messageIsRequest, messageInfo)
+    if messageIsRequest
+      @stdout.println(messageInfo.get_request().to_s)
+    end
+
+  end
+
 end
 {% endhighlight %}
 
