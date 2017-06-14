@@ -254,7 +254,7 @@ java_import 'burp.IMessageEditorTab'
 java_import 'burp.IMessageEditorTabFactory'
 {% endhighlight %}
 
-在registerExtenderCallbacks方法的定义中将这个插件注册成为一个MessageEditorTabFactory，即添加一行：callbacks.registerMessageEditorTabFactory(self)。然后定义createNewInstance方法，根据开发文档的定义，这个方法需要返回一个实例化后的IMessageEditorTab对象。于是我们在这里初始化了一个叫MakeTabs的类，后面我们只需要按照接口规范重新定义这个类即可。
+在registerExtenderCallbacks方法的定义中将这个插件注册成为一个MessageEditorTabFactory，即添加一行：callbacks.registerMessageEditorTabFactory(self)。然后定义createNewInstance方法，根据[开发文档](https://portswigger.net/burp/extender/api/burp/IMessageEditorTabFactory.html)的定义，这个方法需要返回一个实例化后的IMessageEditorTab对象。于是我们在这里初始化了一个叫MakeTabs的类，后面我们只需要按照接口规范重新定义这个类即可。
 
 {% highlight ruby %}
 class BurpExtender
@@ -277,3 +277,24 @@ class BurpExtender
   end
 end
 {% endhighlight %}
+
+
+下面，我们需要按照[IMessageEditorTab的接口规范定义](https://portswigger.net/burp/extender/api/burp/IMessageEditorTab.html)，逐个定义这个类中所有的七个方法（不含initailize方法）。至于这个Tab要实现什么样的功能，我们借鉴[burpsuite扩展开发之Python](http://drops.wooyun.org/tools/5751)中的例子，让它显示格式化后的json字符串，通过这个非常简单的例子让读者明白代码的逻辑。实际上，依托ruby编程语言本身的能力和BurpExtender丰富的接口，可以延伸出丰富的功能扩展。
+
+initialize方法，这里根据需要传入callback和editable两个参数。@stderr和@stdout两个类变量是用于调试的错误输出和标准输出。@helper是一个辅助模块的对象，接触它可以完成对http数据的分析。@txt_input控制文本的显示。@editable是一个布尔值。@callbacks是IBurpExtenderCallbacks对象。
+
+getTabCaption方法返回的文本（String类型）就是Tab显示的名称。
+
+getUiComponent方法返回java.awt.Component对象，它通过@txt_input.get_component()获得。
+
+isEnabled方法返回一个布尔值，可以根据条件判断当前Tab是否显示。
+
+setMessage返回void类型，当isEnable返回true时，可以通过在这个方法中操作@txt_input对象控制窗体的输出内容。假设这里的response是一段Json数据，那么我们通过ruby json库的方法将其格式化输出并丢弃响应头，当数据流是request的时候不显示窗体。另外，因为要用到ruby内建的json库，所以需要在"require 'java"下面加上一行"require 'json'"。
+
+getMessage返回byte类型，意为当前显示的文本，可以通过@txt_input.getText()对象获得。
+
+isModifed返回一个布尔值，它的作用是判断当前的文本内容是否被改变过。
+
+getSelectedData返回byte类型，它通过@txt_input.getSelectedText()获得。
+
+完整的代码：
