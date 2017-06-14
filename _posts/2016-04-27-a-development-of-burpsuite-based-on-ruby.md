@@ -173,10 +173,6 @@ class BurpExtender
 end
 {% endhighlight %}
 
-必须要有第一行require 'java'，
-否则后面引入java接口类会报错；
-代码第二行引入IBurpExtender这个Burp的java类。
-Burp的开发者把相关的api封装在一个类中，
-在调用api之前需要在代码顶部引入这个类，同时要include这个module。这段代码中，registerExtenderCallbacks这个方法封装在IBurpExtender这个类里面。事实上，IBurpExtender这个类中只封装了仅有的一个方法：registerExtenderCallbacks，它是一个程序的入口，有点类似于main()函数。
+必须要有第一行require 'java'，否则后面引入java接口类会报错；代码第二行引入IBurpExtender这个Burp的java类。Burp的开发者把相关的api封装在一个类中，在调用api之前需要在代码顶部引入这个类，同时要include这个module。这段代码中，registerExtenderCallbacks这个方法封装在IBurpExtender这个类里面。事实上，IBurpExtender这个类中只封装了仅有的一个方法：registerExtenderCallbacks，它是一个程序的入口，有点类似于main()函数。
 
 官方的接口文档对registerExtenderCallbacks方法做了这样的说明：
