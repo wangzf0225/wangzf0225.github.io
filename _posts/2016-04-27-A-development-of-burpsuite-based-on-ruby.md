@@ -140,3 +140,4 @@ Burpsuite官方网站提供了一个测试文件（点这里下载）
 解压缩后可以在名为ruby的目录下面看到一个HelloWorld.rb文件，这个就是要载入的插件代码。
 
 点击Extentders标签下的Extention选项卡，在上半部分左侧点击“Add"
+
