@@ -254,30 +254,3 @@ java_import 'burp.IMessageEditorTab'
 java_import 'burp.IMessageEditorTabFactory'
 {% end hightlight %}
 
-callbacks.registerMessageEditorTabFactory(self)。然后定义createNewInstance方法，根据开发文档的定义，这个方法需要返回一个实例化后的IMessageEditorTab对象。于是我们在这里初始化了一个叫MakeTabs的类，后面我们只需要按照接口规范重新定义这个类即可。
-
-{% hightlight ruby %}
-class BurpExtender
-  include IBurpExtender, IMessageEditorTab, IMessageEditorTabFactory
-
-  def   registerExtenderCallbacks(callbacks)
-
-    @callbacks = callbacks
-
-    callbacks.setExtensionName("MessageEditorTab")
-
-    @stdout = java.io.PrintWriter.new(callbacks.getStdout(), true)
-
-    callbacks.registerHttpListener(self)
-    callbacks.registerMessageEditorTabFactory(self)
-  end
-
-  def createNewInstance(controller, editable)
-    MakeTabs.new(@callbacks, editable)
-  end
-end
-{% end hightlight %}
-
-下面，我们需要按照IMessageEditorTab的接口规范定义，逐个定义这个类中所有的七个方法（不含initailize方法）。至于这个Tab要实现什么样的功能，我们借鉴burpsuite扩展开发之Python中的例子，让它显示格式化后的json字符串，通过这个非常简单的例子让读者明白代码的逻辑。实际上，依托ruby编程语言本身的能力和BurpExtender丰富的接口，可以延伸出丰富的功能扩展。
-
-initialize方法，这里根据需要传入callback和editable两个参数。@stderr和@stdout两个类变量是用于调试的错误输出和标准输出。@helper是一个辅助模块的对象，接触它可以完成对http数据的分析。@txt_input控制文本的显示。@editable是一个布尔值。@callbacks是IBurpExtenderCallbacks对象。
