@@ -252,4 +252,5 @@ require 'java'
 java_import 'burp.IBurpExtender'
 java_import 'burp.IMessageEditorTab'
 java_import 'burp.IMessageEditorTabFactory'
-{% end highlight %}
+{% endhighlight %}
+
