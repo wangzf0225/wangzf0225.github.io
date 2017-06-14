@@ -189,10 +189,9 @@ end
 
 在burp.IHttpListener这个模块中，processHttpMessage是仅有的一个方法，我们在BurpExtender这个类中重写这个方法。官方开发手册对这个方法有如下定义：
 
-{% highlight java %}
+```
 void processHttpMessage(int toolFlag, boolean messageIsRequest, IHttpRequestResponse messageInfo)
-{% end highlight %}
-
+```
 
 我们使用get_request()方法获取请求对象（getRequest是这个方法的别名）。此时Http包的数据是不能直接输出的，在调试的过程中，笔者对这个对象使用了methods方法获取它的所有实例方法,最后使用了to_s方法对数据的内容直接输出（需要注意的是，不同版本的jruby的to_s操作可能会有所不同）。这么做的原因是，get_request()获取到的数据对象不是文本，而是一个hash的子类,通过to_s方法把对象转换成String输出。
 
