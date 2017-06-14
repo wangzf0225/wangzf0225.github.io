@@ -189,6 +189,7 @@ end
 
 在burp.IHttpListener这个模块中，processHttpMessage是仅有的一个方法，我们在BurpExtender这个类中重写这个方法。官方开发手册对这个方法有如下定义：
 
+{% highlight ruby %}public ConstantTransformer(Object constantToReturn) {} {% end highlight %}
 
 其中toolFlag代表功能的旗标常数，每个常数代表的组件是固定的，可以在文档中查到；messageIsRequest表示HttpListener监听到的数据是否是一个请求；messageInfo是一个IHttpRequestResponse对象，它有多个实例方法，详细的使用方法可以在开发文档中找到。processHttpMessage方法通过参数把HTTP请求或响应的数据传递进来，开发者可以根据自己的需要对其进行处理。
 
