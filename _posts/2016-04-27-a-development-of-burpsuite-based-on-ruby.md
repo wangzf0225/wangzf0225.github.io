@@ -189,11 +189,47 @@ end
 
 在burp.IHttpListener这个模块中，processHttpMessage是仅有的一个方法，我们在BurpExtender这个类中重写这个方法。官方开发手册对这个方法有如下定义：
 
-{% highlight %}
+```
 void processHttpMessage(int toolFlag, boolean messageIsRequest, IHttpRequestResponse messageInfo)
-{% endhighlight %}
+```
 
 其中toolFlag代表功能的旗标常数，每个常数代表的组件是固定的，可以在文档中查到；messageIsRequest表示HttpListener监听到的数据是否是一个请求；messageInfo是一个IHttpRequestResponse对象，它有多个实例方法，详细的使用方法可以在开发文档中找到。processHttpMessage方法通过参数把HTTP请求或响应的数据传递进来，开发者可以根据自己的需要对其进行处理。
 
 我们使用get_request()方法获取请求对象（getRequest是这个方法的别名）。此时Http包的数据是不能直接输出的，在调试的过程中，笔者对这个对象使用了methods方法获取它的所有实例方法,最后使用了to_s方法对数据的内容直接输出（需要注意的是，不同版本的jruby的to_s操作可能会有所不同）。这么做的原因是，get_request()获取到的数据对象不是文本，而是一个hash的子类,通过to_s方法把对象转换成String输出。
 
+代码部分：
+
+{% highlight ruby %}
+require 'java'
+java_import 'burp.IBurpExtender'
+java_import 'burp.IHttpListener'
+
+
+class BurpExtender
+
+  include IBurpExtender,IHttpListener
+
+  def registerExtenderCallbacks(callbacks)
+    @callbacks = callbacks
+    @stdout    = java.io.PrintWriter.new(callbacks.getStdout(), true)
+
+    callbacks.setExtensionName("Your Extender Name")
+    callbacks.registerHttpListener(self)
+
+  end
+
+  def processHttpMessage(toolFlag, messageIsRequest, messageInfo)
+    if messageIsRequest
+      @stdout.println(messageInfo.get_request().to_s)
+    end
+
+  end
+
+end
+{% end highlight %}
+
+将上述代码保存为一个ruby文件以后载入到BurpExtender中，在命令行中使用如下命令进行测试
+
+```
+curl -x 127.0.0.1:8009 http://www.xxx.com -I
+```
