@@ -115,11 +115,11 @@ rvm use jruby
 
 让jruby变成当前的操作环境，就可以找到对应的环境变量。
 
-* 下面是非常重要的一步! *
+*下面是非常重要的一步!*
 
-* 下面是非常重要的一步! *
+*下面是非常重要的一步!*
 
-* 下面是非常重要的一步! *
+*下面是非常重要的一步!*
 
 打开命令行，输入以下命令：
 
@@ -132,11 +132,10 @@ JRUBY_HOME=/Users/myname/.rvm/rubies/jruby-1.7.19 java -XX:MaxPermSize=1G -Xmx1g
 打开Burp，在Extender-->Options选项卡最下方的Ruby Environment部门导入你的Jruby.jar文件，没如果没有报错，则说说明加载成功。
 
 ![a_development_of_burpsuite_based_on_ruby_01.jpg](/assets/img/cc710e80636d254de260ea125125547e187e2d8e.jpg)
-![cc710e80636d254de260ea125125547e187e2d8e.jpg](/assets/img/cc710e80636d254de260ea125125547e187e2d8e.jpg)
 
 ## 2.4 测试
 
-Burpsuite官方网站提供了一个测试文件（点这里下载）
+Burpsuite官方网站提供了一个测试文件（[点这里下载](https://portswigger.net/burp/extender/examples/HelloWorld.zip)）
 
 解压缩后可以在名为ruby的目录下面看到一个HelloWorld.rb文件，这个就是要载入的插件代码。
 
@@ -153,6 +152,7 @@ Burpsuite官方网站提供了一个测试文件（点这里下载）
 
 回到主页面点击Next，就会在弹出的控制台窗口中显示Hello World字符，此时全部的准备工作都已完成。
 
+![a_development_of_burpsuite_based_on_ruby_05.jpg](/assets/img/46b4e1572b38eea59a9c13e0ac4eb5a640522c9c.jpg)
 
 # 0x02 第一个Ruby扩展插件
 
@@ -237,7 +237,7 @@ curl -x 127.0.0.1:8009 http://www.xxx.com -I
 
 效果如图所示：
 
-![a_development_of_burpsuite_based_on_ruby_05.jpg](assets/img/8fa73de088b587bc2d95184f678746465101add9.jpg)
+![a_development_of_burpsuite_based_on_ruby_06.jpg](/assets/img/8fa73de088b587bc2d95184f678746465101add9.jpg)
 
 # 0x03 创建一个HttpMessageEditorTab实例
 
@@ -381,9 +381,9 @@ end
 {% end hightlight%}
 
 将上述代码保存至一个ruby文件中并在BurpExtender选项卡中载入，就可以看到如下效果：
-![a_development_of_burpsuite_based_on_ruby_06.jpg](/assets/img/1cbde3d4f4a0bd4cbac620433799bd0d968d1435.jpg)
+![a_development_of_burpsuite_based_on_ruby_07.jpg](/assets/img/1cbde3d4f4a0bd4cbac620433799bd0d968d1435.jpg)
 
-![a_development_of_burpsuite_based_on_ruby_07.jpg](/assets/img/5a6761c0d4f74fca15bca71f897b1614f854e7cb.jpg)
+![a_development_of_burpsuite_based_on_ruby_08.jpg](/assets/img/5a6761c0d4f74fca15bca71f897b1614f854e7cb.jpg)
 
 # 0x04 总结
 
@@ -396,7 +396,11 @@ end
 # 0x05 参考资料
 
 [burpsuite扩展开发之Python](http://drops.wooyun.org/tools/5751)
+
 [BurpSuite 扩展开发[1]-API与HelloWold](http://drops.wooyun.org/papers/3962)
+
 [BurpSuite插件开发指南之 API 上篇](http://drops.wooyun.org/tools/14040)
+
 [JSON Crypto Helper a Ruby-based Burp Extension for JSON Encryption/Decryption - Part I](https://www.trustwave.com/Resources/SpiderLabs-Blog/JSON-Crypto-Helper-a-Ruby-based-Burp-Extension-for-JSON-Encryption/Decryption---Part-I/)
+
 [BurpSuite Extension API Index](https://portswigger.net/burp/extender/api/index.html?index-all.html)
