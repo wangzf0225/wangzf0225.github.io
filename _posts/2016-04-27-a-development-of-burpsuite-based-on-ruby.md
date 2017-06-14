@@ -189,7 +189,7 @@ end
 
 在burp.IHttpListener这个模块中，processHttpMessage是仅有的一个方法，我们在BurpExtender这个类中重写这个方法。官方开发手册对这个方法有如下定义：
 
-{% highlight ruby %}
+{% highlight %}
 void processHttpMessage(int toolFlag, boolean messageIsRequest, IHttpRequestResponse messageInfo)
 {% endhighlight %}
 
