@@ -177,7 +177,7 @@ end
 
 官方的接口文档对registerExtenderCallbacks方法做了这样的说明：
 
->> “This method is invoked when the extension is loaded. It registers an instance of the IBurpExtenderCallbacks interface, providing methods that may be invoked by the extension to perform various actions.”
+> “This method is invoked when the extension is loaded. It registers an instance of the IBurpExtenderCallbacks interface, providing methods that may be invoked by the extension to perform various actions.”
 
 这个方法以“注册”的方式定义了扩展插件中可用的实例（类型）。每一个Burp插件都必然包含上面这几行代码，少了一行都不行。
 
@@ -189,9 +189,7 @@ end
 
 在burp.IHttpListener这个模块中，processHttpMessage是仅有的一个方法，我们在BurpExtender这个类中重写这个方法。官方开发手册对这个方法有如下定义：
 
-```
-void processHttpMessage(int toolFlag, boolean messageIsRequest, IHttpRequestResponse messageInfo)
-```
+
 
 其中toolFlag代表功能的旗标常数，每个常数代表的组件是固定的，可以在文档中查到；messageIsRequest表示HttpListener监听到的数据是否是一个请求；messageInfo是一个IHttpRequestResponse对象，它有多个实例方法，详细的使用方法可以在开发文档中找到。processHttpMessage方法通过参数把HTTP请求或响应的数据传递进来，开发者可以根据自己的需要对其进行处理。
 
@@ -199,7 +197,18 @@ void processHttpMessage(int toolFlag, boolean messageIsRequest, IHttpRequestResp
 
 代码部分：
 
+{% highlight ruby %}
+require 'java'
+java_import 'burp.IBurpExtender'
 
+class BurpExtender
+  include IBurpExtender
+
+  def registerExtenderCallbacks(callbacks)
+    callbacks.setExtensionName("Your Extender Name")
+  end
+end
+{% endhighlight %}
 
 将上述代码保存为一个ruby文件以后载入到BurpExtender中，在命令行中使用如下命令进行测试
 
