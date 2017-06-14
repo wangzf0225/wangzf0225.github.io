@@ -177,15 +177,13 @@ end
 
 官方的接口文档对registerExtenderCallbacks方法做了这样的说明：
 
-> “This method is invoked when the extension is loaded. It registers an instance of the IBurpExtenderCallbacks interface, providing methods that may be invoked by the extension to perform various actions.”
+>> “This method is invoked when the extension is loaded. It registers an instance of the IBurpExtenderCallbacks interface, providing methods that may be invoked by the extension to perform various actions.”
 
 这个方法以“注册”的方式定义了扩展插件中可用的实例（类型）。每一个Burp插件都必然包含上面这几行代码，少了一行都不行。
 
 现在，我们设计一个最简单的功能：在BurpSuite Extender选项卡中的Output对话框输出监听到的HTTP请求，通过这个实现这个功能来让读者体会到Burp插件开发的大概流程。
 
-我们需要在刚才的代码上稍加变化：首先，我们使用一个名叫processHttpMessage()的方法，通过查询开发手册，我们发现这个方法封装在一个名叫IHttpListener的模块中，于是在代码开头添加一
-行"java_import 'burp.IHttpListener'"，同时在BurpExtender类中include这个叫IHttpListener的module，具体做法可见下面的示例代码（另一种写法是在"include IBurpExtender"这行下面另起
-一行"include IHttpListener"）。
+我们需要在刚才的代码上稍加变化：首先，我们使用一个名叫processHttpMessage()的方法，通过查询开发手册，我们发现这个方法封装在一个名叫IHttpListener的模块中，于是在代码开头添加一行"java_import 'burp.IHttpListener'"，同时在BurpExtender类中include这个叫IHttpListener的module，具体做法可见下面的示例代码（另一种写法是在"include IBurpExtender"这行下面另起一行"include IHttpListener"）。
 
 然后在"registerExtenderCallbacks"方法中加入一行"callbacks.registerHttpListener(self)"，这是告诉引擎，这个插件被当做一个HTTP监听器来使用。
 
