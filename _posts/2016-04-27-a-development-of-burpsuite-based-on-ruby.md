@@ -383,3 +383,28 @@ class MakeTabs
 end
 
 {% endhighlight %}
+
+将上述代码保存至一个ruby文件中并在BurpExtender选项卡中载入，就可以看到如下效果：
+![a_development_of_burpsuite_based_on_ruby_07.jpg](/assets/img/1cbde3d4f4a0bd4cbac620433799bd0d968d1435.jpg)
+
+![a_development_of_burpsuite_based_on_ruby_08.jpg](/assets/img/5a6761c0d4f74fca15bca71f897b1614f854e7cb.jpg)
+
+# 0x04 总结
+
+具备一定ruby编程基础的小伙伴看懂上面的这两段代码并不是难事，实际上笔者最初的想法是把自己在工作中写的一个工具作为案例来分享，但最终放弃了这个想法。原因是考虑到这个工具跟工作的场景结合比较紧密，通用性不强所以不便于移植，另一方面这个工具代码量比较大，结构也较本文中讲解的代码复杂一些，如果要详细讲解清楚可能要占用大量篇幅，反而可能把重要的信息淹没。
+
+从我个人折腾Extender的经验来看，代码的编码是一项基本功，而最初上手开始编写插件的时候，一些针对BurpSuite扩展功能的基本操作可能成为一个瓶颈——我甚至认为，这篇文章最重点的内容并不是后面的代码，而是第一节环境配置，因为笔者花费在从坑里爬出来的时间甚至比写代码的时间还要久。所以这里分享的内容并没有太大难度，仅仅是我认为可能会阻挡很多入门选手的门槛。当然这里也只是介绍了BurpExtender使用技巧的一小部分，更多高级的用法需要在时间中慢慢积累经验。
+
+大家有什么问题欢迎一起交流探讨。
+
+# 0x05 参考资料
+
+[burpsuite扩展开发之Python](http://drops.wooyun.org/tools/5751)
+
+[BurpSuite 扩展开发[1]-API与HelloWold](http://drops.wooyun.org/papers/3962)
+
+[BurpSuite插件开发指南之 API 上篇](http://drops.wooyun.org/tools/14040)
+
+[JSON Crypto Helper a Ruby-based Burp Extension for JSON Encryption/Decryption - Part I](https://www.trustwave.com/Resources/SpiderLabs-Blog/JSON-Crypto-Helper-a-Ruby-based-Burp-Extension-for-JSON-Encryption/Decryption---Part-I/)
+
+[BurpSuite Extension API Index](https://portswigger.net/burp/extender/api/index.html?index-all.html)
