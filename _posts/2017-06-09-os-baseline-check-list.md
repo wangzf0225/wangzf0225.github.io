@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "CentOS系统基线检查点"
-date: 2016-04-27 14:30:26 +0800
+date: 2017-06-09 18:30:26 +0800
 categories: original
 ---
 
