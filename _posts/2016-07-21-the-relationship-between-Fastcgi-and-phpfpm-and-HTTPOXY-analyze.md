@@ -20,13 +20,13 @@ categories: original
 为了测试，我部署了一个php环境，并写了测试代码，用nginx假设了正向代理：
 
 
-``` 
-<?
+{% highlight php%}
+<?php
 
 var_dump(getenv("HTTP_PROXY"));
 
 ?>
-```
+{% endhighlight %}
  
 
  
