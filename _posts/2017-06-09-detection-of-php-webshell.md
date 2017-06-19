@@ -3,7 +3,7 @@ layout: post
 title:  "PHP webshell检测思路"
 date: 2017-06-09 16:16:26 +0800
 author: Invo
-categories: origin
+categories: original
 ---
 # 1 基于inode的敏感文件发现方法
 
