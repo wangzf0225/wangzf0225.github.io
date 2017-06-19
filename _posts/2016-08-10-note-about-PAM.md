@@ -10,10 +10,10 @@ PAM是类Unix系统中使用的一个用于用户身份认证的模块。最早�
 
 PAM 的API起着承上启下的作用，它是应用程序和认证鉴别模块之间联系的纽带和桥梁：当应用程序调用PAM API 时，应用接口层按照PAM配置文件的定义来加载相应的认证鉴别模块。然后把请求（即从应用程序那里得到的参数）传递给底层的认证鉴别模块，这时认证鉴别模块就可以根据要求执行具体的认证鉴别操作了。当认证鉴别模块执行完相应的操作后，再将结果返回给应用接口层，然后由接口层根据配置的具体情况将来自认证鉴别模块的应答返回给应用程序。
 
-PAM配置文件的解读
+PAM配置文件的解
 
-![http://www.infoq.com/cn/articles/linux-pam-one](http://www.infoq.com/cn/articles/linux-pam-one)
+[PAM配置文件的解读]:http://www.infoq.com/cn/articles/linux-pam-one
 
-PAM各种详细使用案例
+PAM配置文件的解
 
-![http://www.infoq.com/cn/articles/linux-pam-two](http://www.infoq.com/cn/articles/linux-pam-one)
+[PAM各种详细使用案例]:http://www.infoq.com/cn/articles/linux-pam-two
