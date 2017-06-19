@@ -11,7 +11,7 @@ categories: original
 ### 获得shell的姿势
 1.一段python脚本
 
-```
+{% highlight python %}
 from socket import *
 import subprocess
 import os, threading, sys, time
@@ -25,7 +25,7 @@ if __name__ == "__main__":
         proc = subprocess.Popen(["/bin/sh","-i"], stdin=talk,
                 stdout=talk, stderr=talk, shell=True)
 
-```
+{% endhighlight %}
 
 
 观察进程的派生关系，通过监听的端口找到模拟攻击者的shell进程，这个pid为5359的进程在进程树上是init进程的子进程，这是一个比较明显的异常信号。这是一个正向连接的脚本，即服务器开放一个监听端口让攻击者连接。这个脚本fork出一个子进程，当用户连接上以后就结束主进程。子进程由init接管，pid变成1。而通常，bash、sh等shell或者perl、python、ruby、lua等程序语言一定是由bash、ssh、login等程序派生出来的。
@@ -87,13 +87,17 @@ b 使用nc的-e参数
 
 2.父进程为某个守护程序或程序语言，子进程为另一种程序语言。例如java派生出perl。
 
-2.init派生的bash、ash、ksh……等等。（PHP、ruby、perl也要监控，单python暂不考虑，python对误报和漏报的影响较大）
+2.init派生的bash、ash、ksh……等等。（PHP、ruby、perl也要监控，但鉴于很多监控工具使用python编写，如果检测init直接派生的python会有大量误报的问题）
 
-3.bash建立了socket
+3.nc程序进程，出现了管道或者-e参数
 
-4.子进程的创建时间与父进程相差很远（同时又不是周期性的），除非父进程是init的情况
+以上是特征非常明显的进程状态，以下还有两条可以作为辅助的特征，但最好不要独立使用，因为会有很多误报。
 
-5.nc程序进程，出现了管道或者-e参数
+1.子进程的创建时间与父进程相差很远（同时又不是周期性的），除非父进程是init的情况
+
+2.bash建立了socket
+
+其实还有一些规则是我没想到的，欢迎大家补充。可以发邮件给我wangzf0225#gmail.com
 
 ### 模拟一个场景
 例子：利用S2-045漏洞反弹shell
