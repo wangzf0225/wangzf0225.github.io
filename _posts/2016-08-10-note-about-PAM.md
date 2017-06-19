@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "PAM要点笔记"
-date: 2016-01-19 21:06:26 +0800
-categories: jekyll
+date: 2016-08-10 19:06:26 +0800
+categories: note
 ---
 PAM是类Unix系统中使用的一个用于用户身份认证的模块。最早的操作系统只能满足用户登录的需要，但是对于很多程序和进程，要单独在程序中编写关于身份认证的代码。这就使得程序非常臃肿和复杂。为了解决这个问题，solaris公司开发了Pluggable Authentication Module--PAM，通过独立的认证模块和可调用的API接口来解决这个问题。下面引用一张图片。
 
