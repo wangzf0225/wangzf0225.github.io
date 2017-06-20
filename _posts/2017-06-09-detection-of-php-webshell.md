@@ -66,18 +66,3 @@ inode是指在许多“类Unix文件系统”中的一种数据结构。每个in
 * php反射相关函数  http://php.net/manual/zh/book.reflection.php
 
  
-
-### 参考资料
-
-                                     
-
-* 大小马特征  http://www.freebuf.com/column/133753.html
-
-* 一句话后门 http://www.freebuf.com/articles/web/9396.html
-
-* php木马绕过检测方式 http://www.cnseay.com/1102/
-
-* 统计特征识别webshell  http://www.freebuf.com/articles/4240.html
-
-* php反射相关函数  http://php.net/manual/zh/book.reflection.php
-

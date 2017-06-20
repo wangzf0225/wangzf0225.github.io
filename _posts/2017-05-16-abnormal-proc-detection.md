@@ -10,7 +10,6 @@ categories: original
 
 ### 获得shell的姿势
 1.一段python脚本
-
 {% highlight python %}
 from socket import *
 import subprocess
@@ -26,7 +25,6 @@ if __name__ == "__main__":
                 stdout=talk, stderr=talk, shell=True)
 
 {% endhighlight %}
-
 
 观察进程的派生关系，通过监听的端口找到模拟攻击者的shell进程，这个pid为5359的进程在进程树上是init进程的子进程，这是一个比较明显的异常信号。这是一个正向连接的脚本，即服务器开放一个监听端口让攻击者连接。这个脚本fork出一个子进程，当用户连接上以后就结束主进程。子进程由init接管，pid变成1。而通常，bash、sh等shell或者perl、python、ruby、lua等程序语言一定是由bash、ssh、login等程序派生出来的。
 
