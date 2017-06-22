@@ -23,7 +23,11 @@ categories: original
 + d 参数secure-file-priv=""，同时关闭seLinux模块，可以说条件还是蛮苛刻的
 
 
-站在现实的角度上考虑，要达成上述所有条件并不容易，而且如果管理员松懈成这个样子，那么他的server通过其他方式被入侵的可能性应该更大。在研究mysql向操作系统写入文件的过程中，发现了另一种办法：pager。如果mysql的版本允许pager，--no-pager配置为false，那么可以通过再mysql的命令行执行pager cat|grepo -o ssh.*[^|]>> /home/mysql/.ssh/authorized_keys;将公钥写进authorized_keys文件。
+站在现实的角度上考虑，要达成上述所有条件并不容易，而且如果管理员松懈成这个样子，那么他的server通过其他方式被入侵的可能性应该更大。在研究mysql向操作系统写入文件的过程中，发现了另一种办法：pager。如果mysql的版本允许pager，--no-pager配置为false，那么可以通过再mysql的命令行执行以下命令将公钥写入authorized_keys文件。
+
+```
+pager cat|grepo -o ssh.*[^|]>> /home/mysql/.ssh/authorized_keysl;
+```
 
 看到这个文章让我觉得自己发现了新大陆。然而在实际测试的过程中发现并不顺利。
 
