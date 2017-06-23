@@ -75,8 +75,7 @@ Nginx 中通常采用模块的形式提供各种功能，频率控制方面常�
 
 架构图：
 
-![Loadbalancer Ratelimit](/images/diagram/loadbalancer-ratelimit-architecture.png)
-
+![Loadbalancer Ratelimit](http://blog.liulantao.com/images/diagram/loadbalancer-ratelimit-architecture.png)
 #### 组件失败保护：
 
 *   Nginx 作为基础服务，有前端 keepalived 提供故障转移
@@ -89,7 +88,6 @@ Nginx 中通常采用模块的形式提供各种功能，频率控制方面常�
 
 针对每个请求URL，使用 `nginx` 的 `map` 功能或 `location regex` 进行提取，并规范化为限制规则使用的键名。
 
-<figure class="highlight">
 
 ```
 location ~* ^/(?P<org_name>[0-9a-zA-Z-_]+)/(?P<app_name>[0-9a-zA-Z-]+)/users$
@@ -100,7 +98,6 @@ location ~* ^/(?P<org_name>[0-9a-zA-Z-_]+)/(?P<app_name>[0-9a-zA-Z-]+)/users$
 }
 ```
 
-</figure>
 
 我们将 URL 中提取的信息使用 `set` 语法拼接，将它保存在 `$ratelimit_metric` 变量作为频率控制的键，
 
@@ -108,44 +105,37 @@ location ~* ^/(?P<org_name>[0-9a-zA-Z-_]+)/(?P<app_name>[0-9a-zA-Z-]+)/users$
 
 lua 基础功能需要在 nginx 编译阶段指定选项。如果当前版本不支持 lua 功能，需要重新编译，并在编译时至指定 `--with-lua` 选项。
 
-<div class="highlighter-rouge">
 
 ```
 ./configure --with-lua
 
 ```
 
-</div>
 
 实现逻辑时需要访问 `redis`，因此还需要加载 lua 的 redis 库：[lua-resty-redis](https://github.com/openresty/lua-resty-redis)。
 
 在配置文件的 `http` 上下文部分加一行配置：
 
-<div class="highlighter-rouge">
 
 ```
 lua_package_path "lua/lua-resty-redis/lib/?.lua;;";
 
 ```
 
-</div>
 
 然后加载我们实现逻辑的 lua 脚本，之后的所有逻辑操作都在这个文件中完成。
 
-<div class="highlighter-rouge">
 
 ```
 access_by_lua_file 'ratelimit-with-redis.lua';
 
 ```
 
-</div>
 
 #### 3\. 初始化 redis 连接
 
 首先加载 lua 的 redis 库，设置合理的超时时间。 当连接失败时，则直接从限流逻辑中跳出。
 
-<figure class="highlight">
 
 ```
 local cjson = require "cjson"
@@ -161,13 +151,11 @@ if not ok then
 end
 ```
 
-</figure>
 
 #### 4\. counter incr 操作
 
 对于每一次客户请求，都需要去更新指定的 key。
 
-<figure class="highlight">
 
 ```
 local counter_key = ngx.var.ratelimit_metric
@@ -180,13 +168,11 @@ if not count then
 end
 ```
 
-</figure>
 
 #### 5\. 根据键值控制访问
 
 假定默认限制超过 100 次后，对后续访问进行限制，返回状态码 429。
 
-<figure class="highlight">
 
 ```
 if count > 100 then
@@ -197,11 +183,9 @@ if count > 100 then
 end
 ```
 
-</figure>
 
 #### 6\. 与 Redis 保持长连接
 
-<figure class="highlight">
 
 ```
 local ok, err = red:set_keepalive(100000, 20)
@@ -211,7 +195,6 @@ if not ok then
 end
 ```
 
-</figure>
 
 #### 7\. 时间维度限制
 
@@ -219,17 +202,14 @@ end
 
 修改 counter_key 的定义：
 
-<figure class="highlight">
 
 ```
 local counter_key = time()/60 .. ":" .. ngx.var.ratelimit_metric
 ```
 
-</figure>
 
 #### 8\. 读取 limit 上限设置
 
-<figure class="highlight">
 
 ```
 limit, err = red:get("limit:" .. ngx.var.ratelimit_metric)
@@ -239,7 +219,6 @@ if not limit then
 end
 ```
 
-</figure>
 
 限制默认为 100
 
