@@ -1,12 +1,17 @@
 ---
-layout: principle
-title: [转]PHP扩展编写第一步：PHP和Zend介绍
-city: 南京
+layout: post
+date: 2017-07-20 15:34:26 +0800
+author : JeremyWei
+categories: principle
+title: "[转]PHP扩展编写第一步：PHP和Zend介绍"
 tags: [tech, translate]
 ---
-###  写在最前
+
+```
+* 转发注
 
 这是一篇转载的关于php扩展开发技术的文章，全文有三篇，这是第一篇。因为兴趣的原因，只想了解一下zend的机制，不是专业的php R&D所以不打算深入研究。这里做一个备份，以免原文链接挂掉，大家有兴趣请移步至[weizhifeng.net](http://weizhifeng.net/write-php-extension-part1.html)访问原文。
+···
 
 ###  介绍
 
