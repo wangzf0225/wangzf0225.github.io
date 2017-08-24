@@ -7,13 +7,15 @@ categories: note
 ---
 十年九不遇装一次php，以前装过隔很久以后就会忘了操作，担心下次再忘，做下要点笔记。
 
+以下安装过程基于Centos6。
+
 1.php及nginx安装
 
 ```
 rpm -Uvh http://mirror.webtatic.com/yum/el6/latest.rpm
 
 #确认webstatic是否安装
-rpm -qa | grep webstatic 
+rpm -qa | grep webtatic 
 
 #或者php其他版本，比如：yum install php56w
 yum install php70w.x86_64 
