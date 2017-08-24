@@ -29,6 +29,19 @@ yum install php70w-fpm
 php-fpm -v 
 
 ```
+
+如果是CentOS 7，那么在第一步执行：
+
+```
+rpm -Uvh http://mirror.webtatic.com/yum/el7/epel-release.rpm
+rpm -Uvh http://mirror.webtatic.com/yum/el7/webtatic-release.rpm 
+```
+为了保证安装的源可以生效，安装以后最好执行一遍
+
+```
+sudo yum clean all
+```
+
 nginx的安装就不说了
 
 2.php-fpm的启动
