@@ -25,7 +25,7 @@ php 的生命周期 http://www.cunmou.com/phpbook/1.3.md
 
 3 构建一个PHP Extension
 
-4 通过HOOK方式检测危险函数
+4 通过HOOK方式检测危险的php内建函数
 
 referrer
 http://www.php-internals.com/book/?p=chapt02/02-01-php-life-cycle-and-zend-engine
