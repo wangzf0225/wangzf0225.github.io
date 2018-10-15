@@ -143,7 +143,7 @@ MariaDB [test]> select * from account;
 string(7) "3000.00"
 ```
 
-此时操作数据库，发现被阻塞。经过一段时间后，出现等待超时的提示，说明并发操作被隔离，数据得到保护。
+此时操作数据库，发现被阻塞。经过一段时间后，出现等待超时的提示，说明并发操作被隔离，证明数据得到保护。
 ```
 MariaDB [test]> update account set balance=balance+1 where id = 1;
 ERROR 1205 (HY000): Lock wait timeout exceeded; try restarting transaction
