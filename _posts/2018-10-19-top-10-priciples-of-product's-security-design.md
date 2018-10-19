@@ -82,7 +82,7 @@ $result=mysql_query($sql);
 
 ## 原则5：Fail securely
 
-    即业务系统能够正确安全地处理各种异常和错误。错误样例代码如下：
+即业务系统能够正确安全地处理各种异常和错误。错误样例代码如下：
 
 {% highlight java %}
 isAdmin = true;
