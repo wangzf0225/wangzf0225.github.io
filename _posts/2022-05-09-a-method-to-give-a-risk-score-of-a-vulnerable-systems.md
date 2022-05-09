@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  ""
+title:  "一种针对不同系统的归一化风险分数计算方法"
 date: 2022-05-09 03:06:26 +0800
 author : Invo
 categories: original
