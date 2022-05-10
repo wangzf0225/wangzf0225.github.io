@@ -82,7 +82,7 @@ x4=3*5=15
 最终，安全分数表达式即f(x)=100-100·EXP(-g(x))=100-100·EXP(-g(1/p1·x1+1/p2·x2+1/p3·x3+1/p4·x4）。用公式编辑器做一个漂亮的写法：
 
 ![riskscore.jpg](/assets/img/riskscore.jpg)
-![abnormal-proc-detection-001.png](/assets/img/abnormal-proc-detection-001.png)
+
 
 ## 使用
 
@@ -92,8 +92,11 @@ x4=3*5=15
 我们推荐一组pi取值，p1 = 50，p2 = 18，p3 = 12，p4 = 5。
 
 * Excel实现
-我们可以使用Excel表格或SQL语句操作，Excel内置了指数函数表达式，使用起来非常方便。
-
+我们可以使用Excel表格或SQL语句操作，Excel内置了指数函数表达式，使用起来非常方便。在如图所示的单元格中编辑公式：
+```
+=100-100*EXP(-(SUMIF(B2:B11,1)/D2+SUMIF(B2:B11,2)/D3+SUMIF(B2:B11,3)/D4+SUMIF(B2:B11,4)/D5))
+```
+![riskscore.jpg](/assets/img/riskscore.jpg)
 * SQL实现
 
 ## 验证
