@@ -96,7 +96,7 @@ x4=3*5=15
 ```
 =100-100*EXP(-(SUMIF(B2:B11,1)/D2+SUMIF(B2:B11,2)/D3+SUMIF(B2:B11,3)/D4+SUMIF(B2:B11,4)/D5))
 ```
-![riskscore.jpg](/assets/img/riskscore.jpg)
+![sec-score-excel.jpg](/assets/img/sec-score-excel.jpg)
 * SQL实现
 
 ## 验证
