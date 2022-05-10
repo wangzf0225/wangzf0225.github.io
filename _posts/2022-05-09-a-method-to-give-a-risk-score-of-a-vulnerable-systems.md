@@ -82,6 +82,7 @@ x4=3*5=15
 最终，安全分数表达式即f(x)=100-100·EXP(-g(x))=100-100·EXP(-g(1/p1·x1+1/p2·x2+1/p3·x3+1/p4·x4）。用公式编辑器做一个漂亮的写法：
 
 ![riskscore.jpg](/assets/img/riskscore.jpg)
+![abnormal-proc-detection-001.png](/assets/img/abnormal-proc-detection-001.png)
 
 ## 使用
 
