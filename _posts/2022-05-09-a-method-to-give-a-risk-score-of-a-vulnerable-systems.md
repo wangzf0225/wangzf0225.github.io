@@ -52,11 +52,11 @@ categories: original
 
 ![对称变换.jpg](/assets/img/-e-x.jpg)
 
-*f(x)=-EXP(-x)图像*
+*图1 f(x)=-EXP(-x)图像*
 
 ![平移变换.jpg](/assets/img/1-exp-x.jpg)
 
-*f(x)=1-1·EXP(-x)图像*
+*图2 f(x)=1-1·EXP(-x)图像*
 
 我们希望风险分数和赋值是正相关的，同时希望风险分数和风险的数量是正相关的，那么自变量x是关于全部风险因素的函数，即g(z)=k1·z1+k2·z2+......kn·zn。其中，zi代表每个风险因素的风险赋值，ki代表权重系数，由于f(x)的自变量很大的时候，曲线接近水平，而我们希望f(x)的取值不要太接近，以便保持较好的区分度，因此我们通常将ki设置为一个小于1的常数，也就是说函数g(z)可以表示成g(z)=1/p1·z1+1/p2·z2+......1/pn·zn,pi>1。
 
@@ -84,6 +84,7 @@ x4=3·5=15
 
 ![riskscore.jpg](/assets/img/riskscore.jpg)
 
+*图3 算法的数学公式*
 
 ## 2.4 使用
 
@@ -102,9 +103,29 @@ x4=3·5=15
 ```
 ![sec-score-excel.jpg](/assets/img/sec-score-excel.jpg)
 
+*图4 Excel计算表格*
+
 [点此下载计算表格](/assets/files/a-method-to-give-a-risk-score-of-a-vulnerable-systems-attachment-1.xlsx)
 
 * SQL实现
+
+通过SQL也可以实现该算法，以上述的表格数据为例，SQL语句如下。
+```
+SELECT 100 - 100 * Exp(-Sum(score / weight)) AS security_score
+FROM   (SELECT *,
+               ( CASE
+                   WHEN score = 1 THEN 50
+                   WHEN score = 2 THEN 18
+                   WHEN score = 3 THEN 12
+                   WHEN score = 4 THEN 5
+                   ELSE 1
+                 END ) AS weight
+        FROM   risk_score) raw; 
+```
+
+测试数据及运行结果如下图， 计算结果与Excel计算结果一致。
+
+![from_risk_score_2_security_score.jpg](/assets/img/from_risk_score_2_security_score.jpg)
 
 ## 2.5 验证
 
