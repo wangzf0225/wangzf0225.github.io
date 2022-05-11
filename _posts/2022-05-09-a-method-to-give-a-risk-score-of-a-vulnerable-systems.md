@@ -102,6 +102,8 @@ x4=3·5=15
 ```
 ![sec-score-excel.jpg](/assets/img/sec-score-excel.jpg)
 
+[点此下载计算表格](/assets/files/a-method-to-give-a-risk-score-of-a-vulnerable-systems-attachment-1.xlsx)
+
 * SQL实现
 
 ## 2.5 验证
