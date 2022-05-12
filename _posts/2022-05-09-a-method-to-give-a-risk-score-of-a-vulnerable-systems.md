@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "一种归一化的信息系统安全度量方法"
+title:  "一种归一化的信息系统安全分计算方法"
 date: 2022-05-09 03:06:26 +0800
 author : Invo
 categories: original
