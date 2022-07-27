@@ -2,7 +2,7 @@
 layout: post
 title:  "[转]用户行为监控：bash history logging攻防"
 date: 2017-08-03 11:06:26 +0800
-author : Invo
+author : Mushen
 categories: note
 ---
 

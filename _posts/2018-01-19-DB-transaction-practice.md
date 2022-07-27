@@ -2,7 +2,7 @@
 layout: post
 title:  "数据库事务实验"
 date: 2018-01-19 11:06:26 +0800
-author : Invo
+author : Mushen
 categories: original
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title:  "mac下全盘安全擦除数据的方法"
 date: 2016-03-22 18:06:26 +0800
-author : Invo
+author : Mushen
 categories: original
 ---
 

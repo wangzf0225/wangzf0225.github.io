@@ -2,7 +2,7 @@
 layout: post
 title:  "nginx+php+php-fpm安装手札"
 date: 2017-03-21 17:06:26 +0800
-author : Invo
+author : Mushen
 categories: note
 ---
 十年九不遇装一次php，以前装过隔很久以后就会忘了操作，担心下次再忘，做下要点笔记。

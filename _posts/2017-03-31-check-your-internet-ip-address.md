@@ -2,7 +2,7 @@
 layout: post
 title:  "查看互联网出口IP地址"
 date: 2017-03-31 10:56:26 +0800
-author : Invo
+author : Mushen
 categories: note
 ---
 

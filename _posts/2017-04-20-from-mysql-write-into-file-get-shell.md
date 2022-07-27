@@ -2,7 +2,7 @@
 layout: post
 title:  "通过mysql写入文件功能获取mysql server ssh登录Linux"
 date: 2017-04-20 17:06:26 +0800
-author : Invo
+author : Mushen
 categories: original
 ---
 

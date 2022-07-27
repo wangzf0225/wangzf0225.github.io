@@ -2,7 +2,7 @@
 layout: post
 title:  "为什么git push不用密码"
 date: 2017-12-26 18:51:26 +0800
-author : Invo
+author : Mushen
 categories: original
 ---
 
