@@ -10,13 +10,13 @@ categories: original
 护网临近，各大名单上的“选手”又在紧张的备战节奏中，笔者也不例外。对于一些规模较大组织机构（包括商业公司和非盈利性的单位，下文统一以组织代称），往往有充足的技术、资金和人员投入，而一些中小规模的组织情况则比较复杂。除去那些在安全方向有足够投入和积累的单位，大部分中小组织要么没有足够的实力支持安全团队的发展，要么从来没想过，不知道怎么去做这件事。这组系列文章把目光聚焦在这类基础安全储备比较薄弱的组织身上，通过梳理和总结门槛低、收益高、上手快、不需要过多额外学习的备战方案，让缺少安全能力储备的中小组织能够快速构筑高ROI的安全防御工事。
 
 这组系列文章分为以下几个部分：
-1. 网络隔离
-2. 审计监控
-3. 账号扫雷
-4. 漏洞修复
-5. 基线安全
-6. 攻击诱捕
-7. 钓鱼防护
+1. [网络隔离](https://wangzf0225.github.io/original/2022/06/29/how-to-build-a-defance-infrastructure-from-security-team-without-one-person-1-border-isolation.html)
+2. [审计监控](https://wangzf0225.github.io/original/2022/07/06/how-to-build-a-defance-infrastructure-from-security-team-without-one-person-2-log-and-monitor.html)
+3. [账号扫雷](https://wangzf0225.github.io/original/2022/07/13/how-to-build-a-defance-infrastructure-from-security-team-without-one-person-3-account-minesweeping.html)
+4. [漏洞修复](https://wangzf0225.github.io/original/2022/07/20/how-to-build-a-defance-infrastructure-from-security-team-without-one-person-4-vulnerability-fixing.html)
+5. [基线安全](https://wangzf0225.github.io/original/2022/07/25/how-to-build-a-defance-infrastructure-from-security-team-without-one-person-5-base-line-secure.html)
+6. [攻击诱捕](https://wangzf0225.github.io/original/2022/07/25/how-to-build-a-defance-infrastructure-from-security-team-without-one-person-6-attack-trapping.html)
+7. [钓鱼防护](https://wangzf0225.github.io/original/2022/07/26/how-to-build-a-defance-infrastructure-from-security-team-without-one-person-7-fishing-proofing.html)
 
 总体而言，内容分类比较多，笔者力求用非安全相关领域的研发、运维、技术总监、CTO大佬们能够理解这当中每一项的目标、价值以及构建方法，并且可以根据自己的情况酌情增减，以达到更加贴合自身需要的防御能力。
 
